@@ -35,42 +35,37 @@ implementation 'org.openapis.openapi:openapi:0.0.1'
 package hello.world;
 
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.AddPetResponse;
-import org.openapis.openapi.models.shared.Category;
-import org.openapis.openapi.models.shared.Pet;
-import org.openapis.openapi.models.shared.PetStatus;
+import org.openapis.openapi.models.operations.AddressesListRequest;
+import org.openapis.openapi.models.operations.AddressesListResponse;
 import org.openapis.openapi.models.shared.Security;
-import org.openapis.openapi.models.shared.Tag;
 
 public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security("string"){{
-                    petstoreAuth = "";
+                .setSecurity(new Security("string", "string"){{
+                    username = "";
+                    password = "";
                 }})
                 .build();
 
-            org.openapis.openapi.models.shared.Pet req = new Pet("doggie", new String[]{{
-    add("https://www.example.com/image.jpeg"),
-}}){{
-                id = 123L;
-                category = new Category(){{
-                    id = 1L;
-                    name = "Dogs";
+            AddressesListRequest req = new AddressesListRequest(){{
+                limit = 10L;
+                beforeAfter = "string";
+                include = new String[]{{
+                    add("string"),
                 }};
-                tags = new org.openapis.openapi.models.shared.Tag[]{{
-                    add(new Tag(){{
-                        id = 1234L;
-                        name = "Hugo";
-                    }}),
+                dateCreated = new java.util.HashMap<String, String>(){{
+                    put("key", "string");
                 }};
-                status = PetStatus.PENDING;
+                metadata = new java.util.HashMap<String, String>(){{
+                    put("key", "string");
+                }};
             }};            
 
-            AddPetResponse res = sdk.pet.addPet(req);
+            AddressesListResponse res = sdk.addresses.addressesList(req);
 
-            if (res.pet != null) {
+            if (res.object != null) {
                 // handle response
             }
         } catch (Exception e) {
@@ -84,32 +79,166 @@ public class Application {
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
-### [pet](docs/sdks/pet/README.md)
+### [addresses](docs/sdks/addresses/README.md)
 
-* [addPet](docs/sdks/pet/README.md#addpet) - Add a new pet to the store
-* [updatePet](docs/sdks/pet/README.md#updatepet) - Update an existing pet
-* [findPetsByStatus](docs/sdks/pet/README.md#findpetsbystatus) - Finds Pets by status
-* [deletePet](docs/sdks/pet/README.md#deletepet) - Deletes a pet
-* [getPetById](docs/sdks/pet/README.md#getpetbyid) - Find pet by ID
-* [updatePetWithForm](docs/sdks/pet/README.md#updatepetwithform) - Updates a pet in the store with form data
-* [uploadFile](docs/sdks/pet/README.md#uploadfile) - uploads an image
+* [addressesList](docs/sdks/addresses/README.md#addresseslist) - List
+* [addressCreate](docs/sdks/addresses/README.md#addresscreate) - Create
+* [addressDelete](docs/sdks/addresses/README.md#addressdelete) - Delete
+* [addressRetrieve](docs/sdks/addresses/README.md#addressretrieve) - Retrieve
 
-### [store](docs/sdks/store/README.md)
+### [bankAccounts](docs/sdks/bankaccounts/README.md)
 
-* [getInventory](docs/sdks/store/README.md#getinventory) - Returns pet inventories by status
-* [placeOrder](docs/sdks/store/README.md#placeorder) - Place an order for a pet
-* [deleteOrder](docs/sdks/store/README.md#deleteorder) - Delete purchase order by ID
-* [getOrderById](docs/sdks/store/README.md#getorderbyid) - Find purchase order by ID
+* [bankAccountVerify](docs/sdks/bankaccounts/README.md#bankaccountverify) - Verify
+* [bankAccountDelete](docs/sdks/bankaccounts/README.md#bankaccountdelete) - Delete
+* [bankAccountRetrieve](docs/sdks/bankaccounts/README.md#bankaccountretrieve) - Retrieve
+* [bankAccountsList](docs/sdks/bankaccounts/README.md#bankaccountslist) - List
 
-### [user](docs/sdks/user/README.md)
+### [billingGroups](docs/sdks/billinggroups/README.md)
 
-* [createUser](docs/sdks/user/README.md#createuser) - Create user
-* [createUsersWithListInput](docs/sdks/user/README.md#createuserswithlistinput) - Creates list of users with given input array
-* [loginUser](docs/sdks/user/README.md#loginuser) - Logs user into the system
-* [logoutUser](docs/sdks/user/README.md#logoutuser) - Logs out current logged in user session
-* [deleteUser](docs/sdks/user/README.md#deleteuser) - Delete user
-* [getUserByName](docs/sdks/user/README.md#getuserbyname) - Get user by user name
-* [updateUser](docs/sdks/user/README.md#updateuser) - Update user
+* [billingGroupRetrieve](docs/sdks/billinggroups/README.md#billinggroupretrieve) - Retrieve
+* [billingGroupUpdate](docs/sdks/billinggroups/README.md#billinggroupupdate) - Update
+* [billingGroupsList](docs/sdks/billinggroups/README.md#billinggroupslist) - List
+* [billingGroupCreate](docs/sdks/billinggroups/README.md#billinggroupcreate) - Create
+
+### [buckslips](docs/sdks/buckslips/README.md)
+
+* [buckslipsList](docs/sdks/buckslips/README.md#buckslipslist) - List
+* [buckslipCreate](docs/sdks/buckslips/README.md#buckslipcreate) - Create
+* [buckslipDelete](docs/sdks/buckslips/README.md#buckslipdelete) - Delete
+* [buckslipRetrieve](docs/sdks/buckslips/README.md#buckslipretrieve) - Retrieve
+* [buckslipUpdate](docs/sdks/buckslips/README.md#buckslipupdate) - Update
+
+### [buckslipOrders](docs/sdks/bucksliporders/README.md)
+
+* [buckslipOrdersRetrieve](docs/sdks/bucksliporders/README.md#buckslipordersretrieve) - Retrieve
+* [buckslipOrderCreate](docs/sdks/bucksliporders/README.md#buckslipordercreate) - Create
+
+### [usVerifications](docs/sdks/usverifications/README.md)
+
+* [bulkUsVerifications](docs/sdks/usverifications/README.md#bulkusverifications) - Bulk Verify
+* [usVerification](docs/sdks/usverifications/README.md#usverification) - Single Verify
+
+### [intlVerifications](docs/sdks/intlverifications/README.md)
+
+* [bulkIntlVerifications](docs/sdks/intlverifications/README.md#bulkintlverifications) - Bulk Verify
+* [intlVerification](docs/sdks/intlverifications/README.md#intlverification) - Single Verify
+
+### [campaigns](docs/sdks/campaigns/README.md)
+
+* [campaignsList](docs/sdks/campaigns/README.md#campaignslist) - List
+* [campaignCreate](docs/sdks/campaigns/README.md#campaigncreate) - Create
+* [campaignDelete](docs/sdks/campaigns/README.md#campaigndelete) - Delete
+* [campaignRetrieve](docs/sdks/campaigns/README.md#campaignretrieve) - Retrieve
+* [campaignUpdate](docs/sdks/campaigns/README.md#campaignupdate) - Update
+* [campaignSend](docs/sdks/campaigns/README.md#campaignsend) - Send Campaign
+
+### [cards](docs/sdks/cards/README.md)
+
+* [cardsList](docs/sdks/cards/README.md#cardslist) - List
+* [cardCreate](docs/sdks/cards/README.md#cardcreate) - Create
+* [cardDelete](docs/sdks/cards/README.md#carddelete) - Delete
+* [cardRetrieve](docs/sdks/cards/README.md#cardretrieve) - Retrieve
+* [cardUpdate](docs/sdks/cards/README.md#cardupdate) - Update
+
+### [cardOrders](docs/sdks/cardorders/README.md)
+
+* [cardOrdersRetrieve](docs/sdks/cardorders/README.md#cardordersretrieve) - Retrieve
+* [cardOrderCreate](docs/sdks/cardorders/README.md#cardordercreate) - Create
+
+### [checks](docs/sdks/checks/README.md)
+
+* [checksList](docs/sdks/checks/README.md#checkslist) - List
+* [checkCancel](docs/sdks/checks/README.md#checkcancel) - Cancel
+* [checkRetrieve](docs/sdks/checks/README.md#checkretrieve) - Retrieve
+
+### [creatives](docs/sdks/creatives/README.md)
+
+* [creativeCreate](docs/sdks/creatives/README.md#creativecreate) - Create
+* [creativeRetrieve](docs/sdks/creatives/README.md#creativeretrieve) - Retrieve
+* [creativeUpdate](docs/sdks/creatives/README.md#creativeupdate) - Update
+
+### [identityValidation](docs/sdks/identityvalidation/README.md)
+
+* [identityValidation](docs/sdks/identityvalidation/README.md#identityvalidation) - Identity Validation
+
+### [intlAutocompletions](docs/sdks/intlautocompletions/README.md)
+
+* [intlAutocompletions](docs/sdks/intlautocompletions/README.md#intlautocompletions) - Autocomplete
+
+### [letters](docs/sdks/letters/README.md)
+
+* [letterCancel](docs/sdks/letters/README.md#lettercancel) - Cancel
+* [letterRetrieve](docs/sdks/letters/README.md#letterretrieve) - Retrieve
+* [lettersList](docs/sdks/letters/README.md#letterslist) - List
+
+### [postcards](docs/sdks/postcards/README.md)
+
+* [postcardDelete](docs/sdks/postcards/README.md#postcarddelete) - Cancel
+* [postcardRetrieve](docs/sdks/postcards/README.md#postcardretrieve) - Retrieve
+* [postcardsList](docs/sdks/postcards/README.md#postcardslist) - List
+
+### [qrCodes](docs/sdks/qrcodes/README.md)
+
+* [qrCodesList](docs/sdks/qrcodes/README.md#qrcodeslist) - List
+
+### [urlShortener](docs/sdks/urlshortener/README.md)
+
+* [domainDelete](docs/sdks/urlshortener/README.md#domaindelete) - Delete a Domain
+* [domainGet](docs/sdks/urlshortener/README.md#domainget) - Retrieve a domain
+* [domainList](docs/sdks/urlshortener/README.md#domainlist) - List all domains
+* [domainCreate](docs/sdks/urlshortener/README.md#domaincreate) - Create Domain
+* [domainDeleteLinks](docs/sdks/urlshortener/README.md#domaindeletelinks) - Delete all links for a domain
+* [linksList](docs/sdks/urlshortener/README.md#linkslist) - Retrieve all shortened links
+* [linksDelete](docs/sdks/urlshortener/README.md#linksdelete) - Delete Link
+* [linksGet](docs/sdks/urlshortener/README.md#linksget) - Retrieve a link
+* [linkUpdate](docs/sdks/urlshortener/README.md#linkupdate) - Update a Link
+* [linkCreate](docs/sdks/urlshortener/README.md#linkcreate) - Create Link
+
+### [selfMailers](docs/sdks/selfmailers/README.md)
+
+* [selfMailerDelete](docs/sdks/selfmailers/README.md#selfmailerdelete) - Delete
+* [selfMailerRetrieve](docs/sdks/selfmailers/README.md#selfmailerretrieve) - Retrieve
+* [selfMailersList](docs/sdks/selfmailers/README.md#selfmailerslist) - List
+
+### [templateVersions](docs/sdks/templateversions/README.md)
+
+* [templateVersionDelete](docs/sdks/templateversions/README.md#templateversiondelete) - Delete
+* [templateVersionRetrieve](docs/sdks/templateversions/README.md#templateversionretrieve) - Retrieve
+* [templateVersionUpdate](docs/sdks/templateversions/README.md#templateversionupdate) - Update
+* [templateVersionsList](docs/sdks/templateversions/README.md#templateversionslist) - List
+* [createTemplateVersion](docs/sdks/templateversions/README.md#createtemplateversion) - Create
+
+### [templates](docs/sdks/templates/README.md)
+
+* [templateDelete](docs/sdks/templates/README.md#templatedelete) - Delete
+* [templateRetrieve](docs/sdks/templates/README.md#templateretrieve) - Retrieve
+* [templateUpdate](docs/sdks/templates/README.md#templateupdate) - Update
+* [templatesList](docs/sdks/templates/README.md#templateslist) - List
+* [createTemplate](docs/sdks/templates/README.md#createtemplate) - Create
+
+### [uploads](docs/sdks/uploads/README.md)
+
+* [uploadsList](docs/sdks/uploads/README.md#uploadslist) - List
+* [uploadCreate](docs/sdks/uploads/README.md#uploadcreate) - Create
+* [uploadDelete](docs/sdks/uploads/README.md#uploaddelete) - Delete
+* [uploadRetrieve](docs/sdks/uploads/README.md#uploadretrieve) - Retrieve
+* [uploadUpdate](docs/sdks/uploads/README.md#uploadupdate) - Update
+* [uploadFile](docs/sdks/uploads/README.md#uploadfile) - Upload file
+* [uploadExportCreate](docs/sdks/uploads/README.md#uploadexportcreate) - Create Export
+* [reportRetrieve](docs/sdks/uploads/README.md#reportretrieve) - Retrieve Line Item Report
+* [exportRetrieve](docs/sdks/uploads/README.md#exportretrieve) - Retrieve Export
+
+### [usAutocompletions](docs/sdks/usautocompletions/README.md)
+
+* [autocompletion](docs/sdks/usautocompletions/README.md#autocompletion) - Autocomplete
+
+### [reverseGeocodeLookups](docs/sdks/reversegeocodelookups/README.md)
+
+* [reverseGeocodeLookup](docs/sdks/reversegeocodelookups/README.md#reversegeocodelookup) - Reverse Geocode Lookup
+
+### [zipLookups](docs/sdks/ziplookups/README.md)
+
+* [zipLookup](docs/sdks/ziplookups/README.md#ziplookup) - Lookups
 <!-- End Available Resources and Operations [operations] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->

@@ -3,9 +3,8 @@
 
 ## Overview
 
-Petstore Extended: This is a sample Pet Store Server based on the OpenAPI 3.0 specification.
+Lob: The Lob API is organized around REST. Our API is designed to have predictable, resource-oriented URLs and uses HTTP response codes to indicate any API errors. <p>
 
-Find out more about Swagger
-<http://swagger.io>
+
 ### Available Operations
 

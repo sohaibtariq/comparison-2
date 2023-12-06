@@ -10,39 +10,26 @@ import org.openapis.openapi.utils.SpeakeasyMetadata;
 
 public class UploadFileRequest {
     /**
-     * ID of pet to update
+     * ID of the upload
      */
-    @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=petId")
-    public Long petId;
+    @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=upl_id")
+    public String uplId;
 
-    public UploadFileRequest withPetId(Long petId) {
-        this.petId = petId;
+    public UploadFileRequest withUplId(String uplId) {
+        this.uplId = uplId;
         return this;
     }
     
-    /**
-     * Additional Metadata
-     */
-    @SpeakeasyMetadata("queryParam:style=form,explode=true,name=additionalMetadata")
-    public String additionalMetadata;
+    @SpeakeasyMetadata("request:mediaType=multipart/form-data")
+    public UploadFileRequestBody requestBody;
 
-    public UploadFileRequest withAdditionalMetadata(String additionalMetadata) {
-        this.additionalMetadata = additionalMetadata;
-        return this;
-    }
-    
-    /**
-     * binary data for body of request
-     */
-    @SpeakeasyMetadata("request:mediaType=application/octet-stream")
-    public byte[] requestBody;
-
-    public UploadFileRequest withRequestBody(byte[] requestBody) {
+    public UploadFileRequest withRequestBody(UploadFileRequestBody requestBody) {
         this.requestBody = requestBody;
         return this;
     }
     
-    public UploadFileRequest(@JsonProperty("petId") Long petId) {
-        this.petId = petId;
+    public UploadFileRequest(@JsonProperty("upl_id") String uplId, @JsonProperty("RequestBody") UploadFileRequestBody requestBody) {
+        this.uplId = uplId;
+        this.requestBody = requestBody;
   }
 }

@@ -3,42 +3,37 @@
 package hello.world;
 
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.AddPetResponse;
-import org.openapis.openapi.models.shared.Category;
-import org.openapis.openapi.models.shared.Pet;
-import org.openapis.openapi.models.shared.PetStatus;
+import org.openapis.openapi.models.operations.AddressesListRequest;
+import org.openapis.openapi.models.operations.AddressesListResponse;
 import org.openapis.openapi.models.shared.Security;
-import org.openapis.openapi.models.shared.Tag;
 
 public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security("string"){{
-                    petstoreAuth = "";
+                .setSecurity(new Security("string", "string"){{
+                    username = "";
+                    password = "";
                 }})
                 .build();
 
-            org.openapis.openapi.models.shared.Pet req = new Pet("doggie", new String[]{{
-    add("https://www.example.com/image.jpeg"),
-}}){{
-                id = 123L;
-                category = new Category(){{
-                    id = 1L;
-                    name = "Dogs";
+            AddressesListRequest req = new AddressesListRequest(){{
+                limit = 10L;
+                beforeAfter = "string";
+                include = new String[]{{
+                    add("string"),
                 }};
-                tags = new org.openapis.openapi.models.shared.Tag[]{{
-                    add(new Tag(){{
-                        id = 1234L;
-                        name = "Hugo";
-                    }}),
+                dateCreated = new java.util.HashMap<String, String>(){{
+                    put("key", "string");
                 }};
-                status = PetStatus.PENDING;
+                metadata = new java.util.HashMap<String, String>(){{
+                    put("key", "string");
+                }};
             }};            
 
-            AddPetResponse res = sdk.pet.addPet(req);
+            AddressesListResponse res = sdk.addresses.addressesList(req);
 
-            if (res.pet != null) {
+            if (res.object != null) {
                 // handle response
             }
         } catch (Exception e) {

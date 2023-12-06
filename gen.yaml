@@ -11,7 +11,6 @@ features:
     flattening: 2.81.1
     globalSecurity: 2.81.1
     globalServerURLs: 2.82.1
-    methodSecurity: 2.82.0
 java:
   version: 0.0.1
   artifactID: openapi

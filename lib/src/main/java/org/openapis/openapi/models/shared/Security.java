@@ -9,15 +9,24 @@ import org.openapis.openapi.utils.SpeakeasyMetadata;
 
 
 public class Security {
-    @SpeakeasyMetadata("security:scheme=true,type=oauth2,name=Authorization")
-    public String petstoreAuth;
+    @SpeakeasyMetadata("security:scheme=true,type=http,subtype=basic,name=username")
+    public String username;
 
-    public Security withPetstoreAuth(String petstoreAuth) {
-        this.petstoreAuth = petstoreAuth;
+    public Security withUsername(String username) {
+        this.username = username;
         return this;
     }
     
-    public Security(@JsonProperty("petstore_auth") String petstoreAuth) {
-        this.petstoreAuth = petstoreAuth;
+    @SpeakeasyMetadata("security:scheme=true,type=http,subtype=basic,name=password")
+    public String password;
+
+    public Security withPassword(String password) {
+        this.password = password;
+        return this;
+    }
+    
+    public Security(@JsonProperty("Username") String username, @JsonProperty("Password") String password) {
+        this.username = username;
+        this.password = password;
   }
 }

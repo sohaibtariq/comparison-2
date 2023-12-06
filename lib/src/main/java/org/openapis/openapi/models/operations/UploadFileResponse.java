@@ -43,13 +43,24 @@ public class UploadFileResponse {
     }
     
     /**
-     * successful operation
+     * Successful Response
      */
     
-    public org.openapis.openapi.models.shared.ApiResponse apiResponse;
+    public org.openapis.openapi.models.shared.UploadFile uploadFile;
 
-    public UploadFileResponse withApiResponse(org.openapis.openapi.models.shared.ApiResponse apiResponse) {
-        this.apiResponse = apiResponse;
+    public UploadFileResponse withUploadFile(org.openapis.openapi.models.shared.UploadFile uploadFile) {
+        this.uploadFile = uploadFile;
+        return this;
+    }
+    
+    /**
+     * Validation Error
+     */
+    
+    public UploadFileHTTPValidationError httpValidationError;
+
+    public UploadFileResponse withHTTPValidationError(UploadFileHTTPValidationError httpValidationError) {
+        this.httpValidationError = httpValidationError;
         return this;
     }
     

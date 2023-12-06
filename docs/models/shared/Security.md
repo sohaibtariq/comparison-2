@@ -5,4 +5,5 @@
 
 | Field              | Type               | Required           | Description        | Example            |
 | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
-| `petstoreAuth`     | *String*           | :heavy_check_mark: | N/A                |                    |
+| `username`         | *String*           | :heavy_check_mark: | N/A                |                    |
+| `password`         | *String*           | :heavy_check_mark: | N/A                |                    |
