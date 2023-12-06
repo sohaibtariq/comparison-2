@@ -11,6 +11,7 @@ plugins {
     id 'java-library'
     id 'maven-publish'
     id 'signing'
+    id "org.sonarqube" version "4.4.1.3373"   
 }
 
 compileJava.options.encoding = "UTF-8"
@@ -88,6 +89,14 @@ publishing {
             }
         }
     }
+}
+
+sonar {
+  properties {
+    property "sonar.projectKey", "sohaibtariq_comparison-2"
+    property "sonar.organization", "sohaibtariq"
+    property "sonar.host.url", "https://sonarcloud.io"
+  }
 }
 
 if (!project.hasProperty('skip.signing')) {
